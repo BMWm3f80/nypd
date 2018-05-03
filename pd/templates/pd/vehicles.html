@@ -1,0 +1,36 @@
+{% extends 'pd/home.html' %}
+{% block target %}
+    <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Belongs To</th>
+        <th>Plate Number</th>
+        <th>Model</th>
+          <th>Is in Use</th>
+          <th>Used By</th>
+
+      </tr>
+    </thead>
+    <tbody>
+    {% for c in car %}
+        {% if c.isInUse == True %}
+      <tr>
+        <td>{{ c.BelongsTo }}</td>
+        <td>{{ c.Plate_number }}</td>
+        <td>{{ c.Model }}</td>
+          <td><span class="glyphicon">&#xe013;</span></td>
+          <td>{{ c.Using_by }}</td>
+      </tr>
+        {% else %}
+         <tr class="has-warning">
+        <td>{{ c.BelongsTo }}</td>
+        <td>{{ c.Plate_number }}</td>
+        <td>{{ c.Model }}</td>
+          <td><span class="glyphicon">&#xe014;</span></td>
+          <td>{{ c.Using_by }}</td>
+      </tr>
+        {% endif %}
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

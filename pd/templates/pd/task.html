@@ -1,0 +1,21 @@
+{% extends 'pd/home.html' %}
+{% block target %}
+ <h1 class="panel-heading" >Completed Crimes (Tasks)</h1>
+                    <h3><ul class="list-group">
+                        {% for t in user.task_set.all %}
+                            {% if t.isComplete == True %}
+                            <li class="list-group-item" style="border: solid; border-radius: 5px">{{ t.Title }}</li>
+                                <p class="body-textarea" style="margin-left: 20px">{{ t.Description }}</p>
+                                <p class="text-right">Deadline: {{ t.Dudate }}</p>
+                                <hr style=" display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 5px;">
+                            {% endif %}
+                        {% endfor %}
+                        </ul></h3>
+{% endblock %}
